@@ -21,12 +21,28 @@ class PostRepositoryInMemory : PostRepository {
     override fun getPost(): LiveData<Post> = data
 
     override fun like() {
-        val currentPost = data.value ?: return
-        val updatedPost = currentPost.copy(
-            likeByMe = !currentPost.likeByMe,
-            likes = if (currentPost.likeByMe) {115} else {116}
+        val currentPostLike = data.value ?: return
+        val updatedPostLike = currentPostLike.copy(
+            likeByMe = !currentPostLike.likeByMe,
+            likes = if (currentPostLike.likeByMe) {currentPostLike.likes++} else {currentPostLike.likes--}
         )
-        data.value = updatedPost
+        data.value = updatedPostLike
 
     }
+
+    override fun view() {
+         val currentPostView = data.value ?: return
+         val updatedPostView = currentPostView.copy(
+            views = currentPostView.views++)
+        data.value = updatedPostView
+    }
+
+    override fun share() {
+        val currentPostShare = data.value ?: return
+        val updatedPostShare = currentPostShare.copy(
+            shares = currentPostShare.shares++)
+        data.value = updatedPostShare
+    }
+
+
 }

@@ -29,39 +29,36 @@ class MainActivity : AppCompatActivity() {
             binding.volumeOfLikes.text = formatCount(post.likes)
             binding.volumeOfShare.text = formatCount(post.shares)
             binding.volumeOfViews.text = formatCount(post.views)
+            binding.likes.setImageResource (
+                if (post.likeByMe) {
+                    R.drawable.baseline_favorite_border_24
+                } else {
+                    R.drawable.baseline_favorite_24
+                }
+            )
 
-            binding.root.setOnClickListener {
-            }
+            //binding.root.setOnClickListener {
+            //}
 
             binding.likes.setOnClickListener {
-                //post.likeByMe = !post.likeByMe
-                updateLike(binding, post)
                 viewModel.like()
             }
 
             binding.shares.setOnClickListener {
-                updateShare(binding, post)
+                viewModel.share()
+                //updateShare(binding, post)
             }
 
             binding.views.setOnClickListener {
-                updateViews(binding, post)
+                viewModel.view()
+               // updateViews(binding, post)
             }
         }
 
     }
 
 
-    private fun updateLike(binding: ActivityMainBinding, post: Post) {
-        binding.likes.setImageResource(
-            if (post.likeByMe) {
-                R.drawable.baseline_favorite_border_24
-            } else {
-                R.drawable.baseline_favorite_24
-            }
-        )
-        if (post.likeByMe) post.likes-- else post.likes++
-        binding.volumeOfLikes.text = formatCount(post.likes)
-    }
+
 
 
     private fun updateShare(binding: ActivityMainBinding, post: Post) {

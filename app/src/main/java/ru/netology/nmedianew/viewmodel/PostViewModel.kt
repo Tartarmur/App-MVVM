@@ -12,4 +12,12 @@ class PostViewModel : ViewModel() {
     fun like() {
         repository.like()
     }
+
+    fun share() {
+        repository.share()
+    }
+
+    fun view() {
+        repository.view()
+    }
 }

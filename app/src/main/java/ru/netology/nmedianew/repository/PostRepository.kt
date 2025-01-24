@@ -6,4 +6,6 @@ import ru.netology.nmedianew.dto.Post
 interface PostRepository {
     fun getPost(): LiveData<Post>
     fun like()
+    fun share()
+    fun view()
 }
