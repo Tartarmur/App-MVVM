@@ -6,7 +6,7 @@ data class Post (
     var shares: Long,
     var views: Long,
     val author: String,
-    val date_and_time_of_publication: String,
+    val published: String,
     val content: String,
     val likeByMe: Boolean,
 )

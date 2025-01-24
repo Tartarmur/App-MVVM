@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
         viewModel.post.observe(this){ post ->
             binding.author.text = post.author
             binding.textOfThePublication.text = post.content
-            binding.dateAndTimeOfPublication.text = post.date_and_time_of_publication
+            binding.dateAndTimeOfPublication.text = post.published
             binding.volumeOfLikes.text = formatCount(post.likes)
             binding.volumeOfShare.text = formatCount(post.shares)
             binding.volumeOfViews.text = formatCount(post.views)
